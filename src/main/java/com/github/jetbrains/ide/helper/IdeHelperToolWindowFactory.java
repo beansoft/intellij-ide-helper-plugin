@@ -1,4 +1,4 @@
-package com.example.toolwindow_gradle;
+package com.github.jetbrains.ide.helper;
 
 import com.intellij.DynamicBundle;
 import com.intellij.ide.IdeBundle;
@@ -9,39 +9,37 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
-import com.intellij.ui.ExperimentalUI;
-import com.intellij.ui.IconManager;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBTextArea;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import java.text.MessageFormat;
 import java.util.Properties;
 
 /**
- * Created by beansoft on 17/3/16.
+ * Main entry for the Tool window.
  */
-public class RNToolWindowFactory implements ToolWindowFactory, DumbAware {
-    private static final Icon FIND_ICON =
-            ExperimentalUI.isNewUI() ? IconManager.getInstance().getIcon
-                    ("newui/jsx_13_gray_20x20.svg", RNToolWindowFactory.class)
-                    : IconManager.getInstance().getIcon
-                    ("newui/jsx_13_gray.svg", RNToolWindowFactory.class);
+public class IdeHelperToolWindowFactory implements ToolWindowFactory, DumbAware {
+//    private static final Icon FIND_ICON =
+//            ExperimentalUI.isNewUI() ? IconManager.getInstance().getIcon
+//                    ("newui/jsx_13_gray_20x20.svg", RNToolWindowFactory.class)
+//                    : IconManager.getInstance().getIcon
+//                    ("newui/jsx_13_gray.svg", RNToolWindowFactory.class);
 
-    public static final String TOOL_WINDOW_ID = "RN Console";
-    public final static String PLUGIN_ID = "com.github.beansoftapp.reatnative.idea";
+    public static final String TOOL_WINDOW_ID = "IDE Helper";
+    public final static String PLUGIN_ID = "com.github.jetbrains.ide.helper";
 
-    public RNToolWindowFactory() {
+    public IdeHelperToolWindowFactory() {
+//        String cName = "#" + CodeStyleSettings.class.getName();
+//        System.out.println(cName);
     }
 
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
 //        toolWindow.setIcon(FIND_ICON);
         JBTextArea output = new JBTextArea();
-        Content content = ContentFactory.getInstance().createContent(new JBScrollPane(output), "", false);
+        Content content = ContentFactory.getInstance().createContent(new JBScrollPane(output), "Paths", false);
         content.setCloseable(false);
 //        content.setDisplayName(NotesBundle.message("tab.evernote.title.viewer"));
 //        content.setDescription(NotesBundle.message("tooltip.syncs.with.evernote.view.content"));

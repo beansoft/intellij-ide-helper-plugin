@@ -1,1 +1,1 @@
-rootProject.name = "toolwindow_gradle"
+rootProject.name = "intellij-ide-helper-plugin"

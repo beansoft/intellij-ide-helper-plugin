@@ -1,9 +1,9 @@
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "1.10.1"
+    id("org.jetbrains.intellij") version "1.13.3"
 }
 
-group = "com.example"
+group = "com.github.jetbrains.ide.helper"
 version = "1.0-SNAPSHOT"
 
 repositories {
