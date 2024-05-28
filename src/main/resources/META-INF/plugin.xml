@@ -5,10 +5,10 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>IDE Helper</name>
+    <name>IDEA Log Viewer</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="beansoft@126.com" url="https://github.com/beansoft/">BeanSoft</vendor>
+    <vendor email="changjiong.liu@jetbrains.com" url="https://github.com/beansoft/">Jacky Liu</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -27,11 +27,13 @@ Useful when working under JetBrains Client.
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
-
+    <depends>com.intellij.modules.java</depends>
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="IDE Helper" anchor="bottom" icon="/newui/project.svg" canCloseContents="true"
+        <toolWindow id="IDE Properties" anchor="bottom" icon="/newui/project.svg" canCloseContents="true"
                     factoryClass="com.github.jetbrains.ide.helper.IdeHelperToolWindowFactory" secondary="false"/>
+        <fileEditorProvider id="java-stacktrace-editor"
+                            implementation="org.intellij.plugins.java.ui.stacktrace.StacktraceEditorProvider"/>
     </extensions>
 </idea-plugin>

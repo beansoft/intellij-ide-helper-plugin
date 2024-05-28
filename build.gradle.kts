@@ -1,6 +1,15 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
+    id("java-library")
+    // Java support
     id("java")
-    id("org.jetbrains.intellij") version "1.13.3"
+    // Kotlin support
+    id("org.jetbrains.kotlin.jvm") version "1.9.0"
+    // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
+    id("org.jetbrains.intellij") version "1.17.2"
+    // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
+    id("org.jetbrains.changelog") version "2.0.0"
 }
 
 group = "com.github.jetbrains.ide.helper"
@@ -13,22 +22,27 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("223.8214.52")
-    type.set("IC") // Target IDE Platform
+    version.set("241.14494.240")
+    type.set("IU") // Target IDE Platform
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(listOf("com.intellij.java"))
 }
 
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {
-        sourceCompatibility = "11"
-        targetCompatibility = "11"
+        sourceCompatibility = "17"
+        targetCompatibility = "17"
+        options.encoding = "UTF-8"
+    }
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "17"
+//        kotlinOptions.allWarningsAsErrors = true
     }
 
     patchPluginXml {
         sinceBuild.set("221")
-        untilBuild.set("231.*")
+        untilBuild.set("243.*")
     }
 
     signPlugin {

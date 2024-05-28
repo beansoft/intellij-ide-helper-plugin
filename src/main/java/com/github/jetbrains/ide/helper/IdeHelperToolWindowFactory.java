@@ -33,6 +33,7 @@ public class IdeHelperToolWindowFactory implements ToolWindowFactory, DumbAware 
     public IdeHelperToolWindowFactory() {
 //        String cName = "#" + CodeStyleSettings.class.getName();
 //        System.out.println(cName);
+
     }
 
     @Override
